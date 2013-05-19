@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -23,7 +22,7 @@ import java.awt.image.BufferedImage;
 public class CanvasAngel extends Canvas {
     private int centerX,centerY,left, right,top,bottom,xmiddle,ymiddle;
     private float pixelSize,rHeight,rWidth;
-    private Arco2D arc = new Arco2D(100.0f, 75.0f, 50.0f, 100.0f, 0.0f, 135.0f);
+   
 
     
   
@@ -56,7 +55,7 @@ public class CanvasAngel extends Canvas {
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         pintarCuadro(g2);
         paintCuadricula(g2);
-        arc.paint(g2);
+       
         g.drawImage(image, 0, 0, this);
     }
    

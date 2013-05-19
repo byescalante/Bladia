@@ -14,7 +14,7 @@ import java.awt.geom.AffineTransform;
  *
  * @author byescalante
  */
-public class Arc2 {
+public class Arco2 {
     private float x,y,largo,alto;
     private float startAngle = 0;
     private float angleEnd = 325;
@@ -23,7 +23,7 @@ public class Arc2 {
     private boolean calcularVar = true;
     private Arc2D arc;
 
-    public Arc2(float x, float y, float largo, float alto) {
+    public Arco2(float x, float y, float largo, float alto) {
         this.x = x;
         this.y = y;
         this.largo = largo;

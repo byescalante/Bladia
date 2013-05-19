@@ -5,7 +5,7 @@
 package Test;
 
 
-import Basicas.Arc2;
+import Basicas.Arco2;
 import Basicas.Triangle;
 import Abstract.Strocks;
 import java.awt.Canvas;
@@ -54,7 +54,7 @@ public class CanvasJonathan extends Canvas {
     //private Line2DPruebaByEscalante line = new Line2DPruebaByEscalante(-2, 0, 2, 0);
     //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
     //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
-    private Arc2 arc = new Arc2(-2, 2 , 4, 4);
+    private Arco2 arc = new Arco2(-2, 2 , 4, 4);
     /**
      * 
      * @param rwidth
