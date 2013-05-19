@@ -5,10 +5,16 @@
 package Test;
 
 
+import static Abstract.VarCustomCanvas.maxX;
+import static Abstract.VarCustomCanvas.maxY;
+import static Abstract.VarCustomCanvas.paintCuadricula;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Arc2D;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -17,7 +23,9 @@ import java.awt.Graphics;
 public class CanvasAngel extends Canvas {
     private int centerX,centerY,left, right,top,bottom,xmiddle,ymiddle;
     private float pixelSize,rHeight,rWidth;
+    private Arco2D arc = new Arco2D(100.0f, 75.0f, 50.0f, 100.0f, 0.0f, 135.0f);
 
+    
   
     
     public CanvasAngel() {
@@ -44,7 +52,12 @@ public class CanvasAngel extends Canvas {
     @Override
     public void paint(Graphics g) {
         iniciarval();
-        pintarCuadro(g);
+        BufferedImage image = new BufferedImage(maxX,maxY, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) image.createGraphics();
+        pintarCuadro(g2);
+        paintCuadricula(g2);
+        arc.paint(g2);
+        g.drawImage(image, 0, 0, this);
     }
    
     public void pintarCuadro(Graphics g){
