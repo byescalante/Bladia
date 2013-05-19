@@ -5,7 +5,7 @@
 package Test;
 
 import java.awt.geom.GeneralPath;
-import  static Abstract.VarCCanvas.*;
+//import  static Abstract.VarCCanvas.*;
 import java.awt.Graphics2D;
 /**
  *

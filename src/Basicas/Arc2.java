@@ -2,24 +2,28 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package Basicas;
+
+import java.awt.geom.Arc2D;
+import java.awt.geom.GeneralPath;
 import static Abstract.VarCustomCanvas.*;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
 
 /**
  *
- * @author escalante
+ * @author byescalante
  */
-public class Elipse2D{
+public class Arc2 {
     private float x,y,largo,alto;
-    private Ellipse2D elipse;
+    private float startAngle = 0;
+    private float angleEnd = 325;
+    private int type = Arc2D.PIE;
     private GeneralPath path;
     private boolean calcularVar = true;
+    private Arc2D arc;
 
-    public Elipse2D(float x, float y, float largo, float alto) {
+    public Arc2(float x, float y, float largo, float alto) {
         this.x = x;
         this.y = y;
         this.largo = largo;
@@ -31,8 +35,8 @@ public class Elipse2D{
         this.y = convertFisicY(y);
         this.largo = convertFisicX(largo)-convertFisicX(0);
         this.alto = convertFisicY(0)-convertFisicY(alto);
-        elipse = new Ellipse2D.Float(this.x, this.y, this.largo, this.alto);
-        path = new GeneralPath(elipse);
+        arc = new Arc2D.Float(this.x, this.y, this.largo, this.alto, this.startAngle, this.angleEnd, type);
+        path = new GeneralPath(arc);
     }
     
     public void paint(Graphics2D g,boolean draw,boolean fill){
@@ -111,4 +115,35 @@ public class Elipse2D{
         t.scale(0.9, 0.9);
         path.transform(t); 
      }
+
+    public float getAngleEnd() {
+        return angleEnd;
+    }
+
+    public void setAngleEnd(float angleEnd) {
+        this.angleEnd = angleEnd;
+        calcularVar = true;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        switch (type) {
+            case 0:
+                this.type = Arc2D.PIE;
+                break;
+            case 1:
+                this.type = Arc2D.CHORD;
+                break;
+            case 2:
+                this.type = Arc2D.OPEN;
+                break;
+           
+        }
+    }
+     
+     
+    
 }

@@ -5,19 +5,19 @@
 package Test;
 
 
+import Basicas.Arc2;
+import Basicas.Triangle;
 import Abstract.Strocks;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import static Abstract.VarCustomCanvas.*;
-import Basicas.Square;
 import java.awt.AlphaComposite;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -37,7 +37,7 @@ public class CanvasJonathan extends Canvas {
     private int polygonPaint = 0;
     //====== define un stroke por default.
     private Stroke st = Strocks.simple;
-    //====== indica el tipo de strok a pintar.
+    //====== iIndica el tipo de strok a pintar.
     private int asigStrock = 0;
     //====== crea un objeto de tipo grandient.
     private GradientPaint gradient;
@@ -50,7 +50,11 @@ public class CanvasJonathan extends Canvas {
     //====== composit por defualt.
     private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
     //private Square cu = new Square(-2, 2, 4, 4);
-    private Elipse2D eli = new Elipse2D(-2, 2, 4, 4);
+    //private Elipse2D eli = new Elipse2D(-2, 2, 4, 4);
+    //private Line2DPruebaByEscalante line = new Line2DPruebaByEscalante(-2, 0, 2, 0);
+    //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
+    //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
+    private Arc2 arc = new Arc2(-2, 2 , 4, 4);
     /**
      * 
      * @param rwidth
@@ -71,49 +75,49 @@ public class CanvasJonathan extends Canvas {
                  * Mover a la Izquierda
                  */
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    eli.moveLeft();
+                    arc.moveLeft();
                     repaint();
                 /**
                  * Mover hacia la Derecha
                  */    
                 }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                    eli.moveRight();
+                    arc.moveRight();
                     repaint();
                 /**
                  * Mover hacia Arriba
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_UP){
-                    eli.moveUp();
+                    arc.moveUp();
                     repaint();
                 /**
                  * Mover hacia Abajo
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    eli.moveDwon();
+                    arc.moveDwon();
                     repaint();
                 /**
                  * Rotar a la Izquierda
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_1){
-                    eli.RatationLeft();
+                    arc.RatationLeft();
                     repaint();
                 /**
                  * Rotar a la Derecha
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_2){
-                    eli.RatationRight();
+                    arc.RatationRight();
                     repaint();
                 /**
                  * Scalar en Incremento
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_3){
-                    eli.ScaleUp();
+                    arc.ScaleUp();
                     repaint();
                 /**
                  * Escalar en Decremento
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_4){
-                    eli.ScaleDown();
+                    arc.ScaleDown();
                     repaint();
                 }
                 
@@ -125,6 +129,7 @@ public class CanvasJonathan extends Canvas {
      * 
      * @param g Grafics principal sobre el que se pinta.
      */
+   
     @Override
     public void paint(Graphics g){
         iniciarVAr(this);
@@ -132,7 +137,7 @@ public class CanvasJonathan extends Canvas {
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         paintCuadricula(g2);
         asignarV(g2);
-        eli.paint(g2, draw, fill);
+        arc.paint(g2, draw, fill);
         g.drawImage(image, 0, 0, this);
     }
     /**
@@ -160,6 +165,12 @@ public class CanvasJonathan extends Canvas {
         g2.setComposite(composite);
         
     }
+
+    public void setComposite(float x) {
+        composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, x);
+    }
+    
+    
 
     /**
      * 

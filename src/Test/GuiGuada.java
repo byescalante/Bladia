@@ -15,7 +15,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class GuiGuada  extends JFrame{
     public static void main(String[] args) {
-        
+        new GuiGuada().setVisible(true);
     }
 
     public GuiGuada()  {
