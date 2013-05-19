@@ -8,6 +8,6 @@ package Test;
  *
  * @author byescalante
  */
-public class Prueba {
+public class CustomcanvasByescalante {
     
 }
