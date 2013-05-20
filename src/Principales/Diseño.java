@@ -2,7 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package Principales;
+
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Frame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -15,6 +23,22 @@ public class Diseño extends javax.swing.JFrame {
      */
     public Diseño() {
         initComponents();
+        GraphicsDevice dev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        dev.setFullScreenWindow(this);
+        grupo.add(radio_Draw);
+        grupo.add(radio_fill);
+        radio_Draw.setSelected(true);
+        grupo_relleno.add(radio_color);
+        grupo_relleno.add(radio_gradient);
+        radio_color.setSelected(true);
+    }
+    
+    private DefaultComboBoxModel getModel(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement("simple");
+        model.addElement("medio");
+        model.addElement("completo");
+        return model;
     }
 
     /**
@@ -27,11 +51,13 @@ public class Diseño extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        grupo = new javax.swing.ButtonGroup();
+        grupo_relleno = new javax.swing.ButtonGroup();
         panel_Herramientas = new javax.swing.JPanel();
         slide_transparencia = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         radio_Draw = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        radio_fill = new javax.swing.JRadioButton();
         comboBox_Stroke = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -39,14 +65,16 @@ public class Diseño extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         panel_Gradiel1 = new javax.swing.JPanel();
         panelGradiel2 = new javax.swing.JPanel();
+        radio_color = new javax.swing.JRadioButton();
+        radio_gradient = new javax.swing.JRadioButton();
         panel_Figuras = new javax.swing.JPanel();
         boton_Arco = new javax.swing.JButton();
         boton_Elipse = new javax.swing.JButton();
         boton_linea = new javax.swing.JButton();
         boton_QuaCurv = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botton_roundRectangle = new javax.swing.JButton();
+        botton_square = new javax.swing.JButton();
+        botton_triangle = new javax.swing.JButton();
         panel_Movimientos = new javax.swing.JPanel();
         boton_up = new javax.swing.JButton();
         boton_Derecha = new javax.swing.JButton();
@@ -56,30 +84,60 @@ public class Diseño extends javax.swing.JFrame {
         boton_Decremento = new javax.swing.JButton();
         botonRotarDerecha = new javax.swing.JButton();
         botonRotarIzquierda = new javax.swing.JButton();
+        canvas = new Principales.CustomCanvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         panel_Herramientas.setBackground(new java.awt.Color(204, 204, 204));
         panel_Herramientas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        slide_transparencia.setValue(100);
+        slide_transparencia.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                slide_transparenciaStateChanged(evt);
+            }
+        });
+
         jLabel1.setText("Transparencia");
 
         radio_Draw.setText("Draw");
+        radio_Draw.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radio_DrawItemStateChanged(evt);
+            }
+        });
         radio_Draw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radio_DrawActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setText("Fill");
+        radio_fill.setText("Fill");
+        radio_fill.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radio_fillItemStateChanged(evt);
+            }
+        });
 
-        comboBox_Stroke.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox_Stroke.setModel(this.getModel());
+        comboBox_Stroke.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBox_StrokeItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("Stroke");
 
         jLabel3.setText("Color");
 
         panelColor.setBackground(new java.awt.Color(0, 0, 0));
+        panelColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelColorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelColorLayout = new javax.swing.GroupLayout(panelColor);
         panelColor.setLayout(panelColorLayout);
@@ -95,6 +153,11 @@ public class Diseño extends javax.swing.JFrame {
         jLabel4.setText("Gradient");
 
         panel_Gradiel1.setBackground(new java.awt.Color(0, 51, 255));
+        panel_Gradiel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_Gradiel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_Gradiel1Layout = new javax.swing.GroupLayout(panel_Gradiel1);
         panel_Gradiel1.setLayout(panel_Gradiel1Layout);
@@ -107,7 +170,12 @@ public class Diseño extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        panelGradiel2.setBackground(new java.awt.Color(255, 51, 51));
+        panelGradiel2.setBackground(new java.awt.Color(0, 153, 0));
+        panelGradiel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelGradiel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelGradiel2Layout = new javax.swing.GroupLayout(panelGradiel2);
         panelGradiel2.setLayout(panelGradiel2Layout);
@@ -119,6 +187,20 @@ public class Diseño extends javax.swing.JFrame {
             panelGradiel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        radio_color.setText("Color");
+        radio_color.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radio_colorItemStateChanged(evt);
+            }
+        });
+
+        radio_gradient.setText("Gradient");
+        radio_gradient.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                radio_gradientItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_HerramientasLayout = new javax.swing.GroupLayout(panel_Herramientas);
         panel_Herramientas.setLayout(panel_HerramientasLayout);
@@ -132,14 +214,18 @@ public class Diseño extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radio_Draw, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radio_fill, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(radio_color)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radio_gradient)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panel_Gradiel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelGradiel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,19 +241,22 @@ public class Diseño extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panel_HerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panel_Gradiel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radio_fill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radio_Draw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_HerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(radio_Draw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comboBox_Stroke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_HerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(radio_color)
+                        .addComponent(radio_gradient))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_HerramientasLayout.createSequentialGroup()
                         .addGroup(panel_HerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(slide_transparencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(panelGradiel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -176,23 +265,53 @@ public class Diseño extends javax.swing.JFrame {
         panel_Figuras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         boton_Arco.setText("Arco2D");
-
-        boton_Elipse.setText("Ellipse2D");
-
-        boton_linea.setText("Linea2D");
-
-        boton_QuaCurv.setText("QuaCurv2D");
-
-        jButton1.setText("RoundRectangle2D");
-
-        jButton2.setText("Square2D");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        boton_Arco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                boton_ArcoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Triangle2D");
+        boton_Elipse.setText("Ellipse2D");
+        boton_Elipse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_ElipseActionPerformed(evt);
+            }
+        });
+
+        boton_linea.setText("Linea2D");
+        boton_linea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_lineaActionPerformed(evt);
+            }
+        });
+
+        boton_QuaCurv.setText("QuaCurv2D");
+        boton_QuaCurv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_QuaCurvActionPerformed(evt);
+            }
+        });
+
+        botton_roundRectangle.setText("RoundRectangle2D");
+        botton_roundRectangle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botton_roundRectangleActionPerformed(evt);
+            }
+        });
+
+        botton_square.setText("Square2D");
+        botton_square.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botton_squareActionPerformed(evt);
+            }
+        });
+
+        botton_triangle.setText("Triangle2D");
+        botton_triangle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botton_triangleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_FigurasLayout = new javax.swing.GroupLayout(panel_Figuras);
         panel_Figuras.setLayout(panel_FigurasLayout);
@@ -205,9 +324,9 @@ public class Diseño extends javax.swing.JFrame {
                     .addComponent(boton_Elipse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(boton_Arco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(boton_QuaCurv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botton_roundRectangle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botton_square, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botton_triangle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panel_FigurasLayout.setVerticalGroup(
@@ -222,11 +341,11 @@ public class Diseño extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(boton_QuaCurv, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botton_roundRectangle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botton_square, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botton_triangle, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -241,14 +360,39 @@ public class Diseño extends javax.swing.JFrame {
         });
 
         boton_Derecha.setText("Derecha");
+        boton_Derecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_DerechaActionPerformed(evt);
+            }
+        });
 
         boton_Izquierda.setText("Izquierda");
+        boton_Izquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_IzquierdaActionPerformed(evt);
+            }
+        });
 
         boton_abajo.setText("Abajo");
+        boton_abajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_abajoActionPerformed(evt);
+            }
+        });
 
         boton_escalarIncrement.setText("+");
+        boton_escalarIncrement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_escalarIncrementActionPerformed(evt);
+            }
+        });
 
         boton_Decremento.setText("-");
+        boton_Decremento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_DecrementoActionPerformed(evt);
+            }
+        });
 
         botonRotarDerecha.setText("Rotar Derecha");
         botonRotarDerecha.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +402,11 @@ public class Diseño extends javax.swing.JFrame {
         });
 
         botonRotarIzquierda.setText("Rotar Izquierda");
+        botonRotarIzquierda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRotarIzquierdaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_MovimientosLayout = new javax.swing.GroupLayout(panel_Movimientos);
         panel_Movimientos.setLayout(panel_MovimientosLayout);
@@ -267,14 +416,12 @@ public class Diseño extends javax.swing.JFrame {
                 .addComponent(boton_Izquierda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(boton_Derecha))
-            .addGroup(panel_MovimientosLayout.createSequentialGroup()
-                .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(boton_up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(boton_abajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(boton_escalarIncrement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(boton_Decremento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(botonRotarDerecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panel_MovimientosLayout.setVerticalGroup(
             panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +452,9 @@ public class Diseño extends javax.swing.JFrame {
             .addComponent(panel_Herramientas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panel_Figuras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel_Movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -315,27 +464,122 @@ public class Diseño extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_Figuras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_Movimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panel_Movimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void radio_DrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_DrawActionPerformed
-        // TODO add your handling code here:
+        canvas.setDraw(radio_Draw.isSelected());
     }//GEN-LAST:event_radio_DrawActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botton_squareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_squareActionPerformed
+        canvas.setPolygonPaint(4);
+    }//GEN-LAST:event_botton_squareActionPerformed
 
     private void botonRotarDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRotarDerechaActionPerformed
-        // TODO add your handling code here:
+        canvas.rotationRight();
     }//GEN-LAST:event_botonRotarDerechaActionPerformed
 
     private void boton_upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_upActionPerformed
-        // TODO add your handling code here:
+        canvas.moveUp();
     }//GEN-LAST:event_boton_upActionPerformed
+
+    private void boton_ArcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ArcoActionPerformed
+        canvas.setPolygonPaint(6);
+    }//GEN-LAST:event_boton_ArcoActionPerformed
+
+    private void boton_ElipseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ElipseActionPerformed
+       canvas.setPolygonPaint(5);
+    }//GEN-LAST:event_boton_ElipseActionPerformed
+
+    private void boton_lineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_lineaActionPerformed
+        canvas.setPolygonPaint(0);
+    }//GEN-LAST:event_boton_lineaActionPerformed
+
+    private void boton_QuaCurvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_QuaCurvActionPerformed
+        canvas.setPolygonPaint(1);
+    }//GEN-LAST:event_boton_QuaCurvActionPerformed
+
+    private void botton_roundRectangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_roundRectangleActionPerformed
+        canvas.setPolygonPaint(3);
+    }//GEN-LAST:event_botton_roundRectangleActionPerformed
+
+    private void botton_triangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_triangleActionPerformed
+        canvas.setPolygonPaint(2);
+    }//GEN-LAST:event_botton_triangleActionPerformed
+
+    private void boton_abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_abajoActionPerformed
+        canvas.moveDown();
+    }//GEN-LAST:event_boton_abajoActionPerformed
+
+    private void boton_IzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_IzquierdaActionPerformed
+        canvas.moveleft();
+    }//GEN-LAST:event_boton_IzquierdaActionPerformed
+
+    private void boton_DerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_DerechaActionPerformed
+        canvas.moveRight();
+    }//GEN-LAST:event_boton_DerechaActionPerformed
+
+    private void boton_escalarIncrementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_escalarIncrementActionPerformed
+        canvas.scaleUp();
+    }//GEN-LAST:event_boton_escalarIncrementActionPerformed
+
+    private void boton_DecrementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_DecrementoActionPerformed
+        canvas.scaleDown();
+    }//GEN-LAST:event_boton_DecrementoActionPerformed
+
+    private void botonRotarIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRotarIzquierdaActionPerformed
+        canvas.rotationLeft();
+    }//GEN-LAST:event_botonRotarIzquierdaActionPerformed
+
+    private void comboBox_StrokeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBox_StrokeItemStateChanged
+        canvas.setStroke(comboBox_Stroke.getSelectedIndex());
+    }//GEN-LAST:event_comboBox_StrokeItemStateChanged
+
+    private void radio_DrawItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radio_DrawItemStateChanged
+          
+    }//GEN-LAST:event_radio_DrawItemStateChanged
+
+    private void radio_fillItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radio_fillItemStateChanged
+       canvas.setFill(radio_fill.isSelected());
+    }//GEN-LAST:event_radio_fillItemStateChanged
+
+    private void panelColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelColorMouseClicked
+        Color aux = JColorChooser.showDialog(boton_up, "selecciona tu color", Color.black);
+        canvas.setC(aux);
+        panelColor.setBackground(aux);
+    }//GEN-LAST:event_panelColorMouseClicked
+
+    private void radio_colorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radio_colorItemStateChanged
+        canvas.setIsColor(radio_color.isSelected());
+    }//GEN-LAST:event_radio_colorItemStateChanged
+
+    private void radio_gradientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radio_gradientItemStateChanged
+       canvas.setIsGradient(radio_gradient.isSelected());
+    }//GEN-LAST:event_radio_gradientItemStateChanged
+
+    private void panel_Gradiel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_Gradiel1MouseClicked
+        Color aux = JColorChooser.showDialog(boton_up, "selecciona el primer color del gradient", Color.blue);
+        canvas.setOne(aux);
+        panel_Gradiel1.setBackground(aux);
+    }//GEN-LAST:event_panel_Gradiel1MouseClicked
+
+    private void panelGradiel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGradiel2MouseClicked
+        Color aux = JColorChooser.showDialog(boton_up, "selecciona el segundo color del gradient", Color.green);
+        canvas.setTwo(aux);
+        panelGradiel2.setBackground(aux);
+    }//GEN-LAST:event_panelGradiel2MouseClicked
+
+    private void slide_transparenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slide_transparenciaStateChanged
+        float x = slide_transparencia.getValue();
+        x = x/100;
+        canvas.setComposite(x);
+    }//GEN-LAST:event_slide_transparenciaStateChanged
 
     /**
      * @param args the command line arguments
@@ -384,15 +628,17 @@ public class Diseño extends javax.swing.JFrame {
     private javax.swing.JButton boton_escalarIncrement;
     private javax.swing.JButton boton_linea;
     private javax.swing.JButton boton_up;
+    private javax.swing.JButton botton_roundRectangle;
+    private javax.swing.JButton botton_square;
+    private javax.swing.JButton botton_triangle;
+    private Principales.CustomCanvas canvas;
     private javax.swing.JComboBox comboBox_Stroke;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.ButtonGroup grupo;
+    private javax.swing.ButtonGroup grupo_relleno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JPanel panelColor;
     private javax.swing.JPanel panelGradiel2;
@@ -401,6 +647,9 @@ public class Diseño extends javax.swing.JFrame {
     private javax.swing.JPanel panel_Herramientas;
     private javax.swing.JPanel panel_Movimientos;
     private javax.swing.JRadioButton radio_Draw;
+    private javax.swing.JRadioButton radio_color;
+    private javax.swing.JRadioButton radio_fill;
+    private javax.swing.JRadioButton radio_gradient;
     private javax.swing.JSlider slide_transparencia;
     // End of variables declaration//GEN-END:variables
 }

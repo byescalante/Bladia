@@ -19,6 +19,8 @@ import java.awt.AlphaComposite;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -35,11 +37,11 @@ public class CustomCanvas extends Canvas {
      //====== pinta el poligono con un gradiente si la variable es verdadera(true).
     private boolean isGradient = false;
      //====== determina el poligono que se desea dibujar.
-    private int polygonPaint = 4;
+    private int polygonPaint = -1;
     //====== define un stroke por default.
     private Stroke st = Strocks.simple;
     //====== iIndica el tipo de strok a pintar.
-    private int asigStrock = 2;
+    private int asigStrock = 0;
     //====== crea un objeto de tipo grandient.
     private GradientPaint gradient;
     //====== define el primer color del gradient.
@@ -68,6 +70,23 @@ public class CustomCanvas extends Canvas {
         Abstract.VarCustomCanvas.rwidth = rwidth;
         Abstract.VarCustomCanvas.rheight = rheight;
         setBackground(Color.WHITE);
+        
+    }
+    public CustomCanvas() {
+        Abstract.VarCustomCanvas.rwidth = 18;
+        Abstract.VarCustomCanvas.rheight = 18;
+        setBackground(Color.WHITE);
+        addMouseMotionListener(new MouseAdapter() {
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                if (polygonPaint==1) {
+                    curv.setPoint(e.getX(), e.getY());
+                    repaint();
+                }
+            }
+            
+});
         
     }
     /**
@@ -291,7 +310,7 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
-    public void ratationLeft(){
+    public void rotationLeft(){
         switch (polygonPaint) {
                         case 0:
                             line.RatationLeft();
@@ -325,7 +344,7 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
-    public void tationRight(){
+    public void rotationRight(){
         switch (polygonPaint) {
                         case 0:
                             line.RatationRight();
@@ -359,6 +378,7 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    
     public void scaleUp(){
         switch (polygonPaint) {
                         case 0:
@@ -392,6 +412,7 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    
     public void scaleDown(){
         switch (polygonPaint) {
                         case 0:
@@ -425,6 +446,47 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    
+    public void setStroke(int n){
+        asigStrock = n;
+        repaint();
+    }
+
+    public void setDraw(boolean draw) {
+        this.draw = draw;
+        repaint();
+    }
+
+    public void setFill(boolean fill) {
+        this.fill = fill;
+         repaint();
+    }
+
+    public void setIsColor(boolean isColor) {
+        this.isColor = isColor;
+         repaint();
+    }
+
+    public void setIsGradient(boolean isGradient) {
+        this.isGradient = isGradient;
+         repaint();
+    }
+
+    public void setOne(Color one) {
+        this.one = one;
+         repaint();
+    }
+
+    public void setTwo(Color two) {
+        this.two = two;
+         repaint();
+    }
+
+    public void setC(Color c) {
+        this.c = c;
+         repaint();
+    }
+    
     
     
 }

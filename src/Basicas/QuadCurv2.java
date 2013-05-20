@@ -21,7 +21,8 @@ public class QuadCurv2 {
     private boolean calcularVar = true;
     private QuadCurve2D curve;
     private GeneralPath path;
-
+    private boolean vez = true;
+    
     public QuadCurv2(float x1, float y1,float x3, float y3) {
         this.x1 = x1;
         this.y1 = y1;
@@ -30,10 +31,13 @@ public class QuadCurv2 {
     }
     
     public void calcular(){
-        this.x1 = convertFisicX(x1);
-        this.y1 = convertFisicY(y1);
-        this.x3 = convertFisicX(x3);
-        this.y3 = convertFisicY(y3);
+        if (vez) {
+            this.x1 = convertFisicX(x1);
+            this.y1 = convertFisicY(y1);
+            this.x3 = convertFisicX(x3);
+            this.y3 = convertFisicY(y3);
+            vez = false;
+        }
         curve = new QuadCurve2D.Float(x1, y1, x2, y2, x3, y3);
         path = new GeneralPath(curve);
     }
@@ -43,6 +47,7 @@ public class QuadCurv2 {
              calcular();
              calcularVar = false;
          }
+        
          if (draw) {
              g.draw(path);
          }

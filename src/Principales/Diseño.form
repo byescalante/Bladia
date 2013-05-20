@@ -4,9 +4,17 @@
   <NonVisualComponents>
     <Component class="javax.swing.JScrollBar" name="jScrollBar1">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="grupo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="grupo_relleno">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[800, 600]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -30,7 +38,9 @@
           <Component id="panel_Herramientas" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <Component id="panel_Figuras" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="canvas" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="panel_Movimientos" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -43,6 +53,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panel_Figuras" max="32767" attributes="0"/>
                   <Component id="panel_Movimientos" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="canvas" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -72,14 +86,18 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="radio_Draw" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jRadioButton1" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="radio_fill" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelColor" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="radio_color" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="radio_gradient" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel4" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panel_Gradiel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelGradiel2" min="-2" max="-2" attributes="0"/>
@@ -97,21 +115,25 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="panel_Gradiel1" max="32767" attributes="0"/>
+                      <Component id="radio_fill" alignment="1" max="32767" attributes="0"/>
+                      <Component id="radio_Draw" alignment="1" max="32767" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="1" max="32767" attributes="0"/>
-                          <Component id="radio_Draw" alignment="1" max="32767" attributes="0"/>
                           <Component id="comboBox_Stroke" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
+                          <Component id="radio_color" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radio_gradient" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="panelColor" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="slide_transparencia" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="panelGradiel2" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -122,6 +144,12 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JSlider" name="slide_transparencia">
+          <Properties>
+            <Property name="value" type="int" value="100"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="slide_transparenciaStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -133,25 +161,27 @@
             <Property name="text" type="java.lang.String" value="Draw"/>
           </Properties>
           <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radio_DrawItemStateChanged"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radio_DrawActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="radio_fill">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fill"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radio_fillItemStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBox_Stroke">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="this.getModel()" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comboBox_StrokeItemStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -169,6 +199,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelColorMouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -194,6 +227,9 @@
               <Color blue="ff" green="33" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panel_Gradiel1MouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -211,9 +247,12 @@
         <Container class="javax.swing.JPanel" name="panelGradiel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="ff" type="rgb"/>
+              <Color blue="0" green="99" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelGradiel2MouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -228,6 +267,22 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JRadioButton" name="radio_color">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Color"/>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radio_colorItemStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radio_gradient">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gradient"/>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="radio_gradientItemStateChanged"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panel_Figuras">
@@ -252,9 +307,9 @@
                       <Component id="boton_Elipse" alignment="1" max="32767" attributes="0"/>
                       <Component id="boton_Arco" max="32767" attributes="0"/>
                       <Component id="boton_QuaCurv" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botton_roundRectangle" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botton_square" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botton_triangle" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -272,11 +327,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="boton_QuaCurv" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="botton_roundRectangle" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="botton_square" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="botton_triangle" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -287,39 +342,57 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Arco2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ArcoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_Elipse">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ellipse2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ElipseActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_linea">
           <Properties>
             <Property name="text" type="java.lang.String" value="Linea2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_lineaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_QuaCurv">
           <Properties>
             <Property name="text" type="java.lang.String" value="QuaCurv2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_QuaCurvActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="botton_roundRectangle">
           <Properties>
             <Property name="text" type="java.lang.String" value="RoundRectangle2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_roundRectangleActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="botton_square">
           <Properties>
             <Property name="text" type="java.lang.String" value="Square2D"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_squareActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="botton_triangle">
           <Properties>
             <Property name="text" type="java.lang.String" value="Triangle2D"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_triangleActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -343,15 +416,12 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="boton_Derecha" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <Component id="botonRotarIzquierda" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Component id="boton_up" alignment="0" max="32767" attributes="0"/>
               <Component id="boton_abajo" alignment="0" max="32767" attributes="0"/>
               <Component id="boton_escalarIncrement" alignment="0" max="32767" attributes="0"/>
               <Component id="boton_Decremento" alignment="0" max="32767" attributes="0"/>
               <Component id="botonRotarDerecha" max="32767" attributes="0"/>
+              <Component id="botonRotarIzquierda" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -392,26 +462,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Derecha"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_DerechaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_Izquierda">
           <Properties>
             <Property name="text" type="java.lang.String" value="Izquierda"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_IzquierdaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_abajo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Abajo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_abajoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_escalarIncrement">
           <Properties>
             <Property name="text" type="java.lang.String" value="+"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_escalarIncrementActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="boton_Decremento">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_DecrementoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonRotarDerecha">
           <Properties>
@@ -425,8 +510,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Rotar Izquierda"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRotarIzquierdaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="Principales.CustomCanvas" name="canvas">
+    </Component>
   </SubComponents>
 </Form>
