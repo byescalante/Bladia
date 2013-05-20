@@ -13,6 +13,8 @@ import java.awt.Stroke;
 import static Abstract.VarCustomCanvas.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -50,8 +52,46 @@ public class MiCanvasHugo extends Canvas {
     public MiCanvasHugo(float rwidth, float rheight) {
         Abstract.VarCustomCanvas.rwidth = rwidth;
         Abstract.VarCustomCanvas.rheight = rheight;
-        
         setBackground(Color.WHITE);
+        addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //mover hacia la izquierda
+                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    c1.moveLeft();
+                    repaint();
+                    //mover hacia la derecha
+                }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                    c1.rightMove();
+                    repaint();
+                //mover hacia arriba
+                }else if(e.getKeyCode() == KeyEvent.VK_UP){
+                    c1.moveUp();
+                    repaint();
+                //mover hacia abajo
+                }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                    c1.moveDown();
+                    repaint();
+                //rotar hacia la derecha
+                }else if(e.getKeyCode() == KeyEvent.VK_1){
+                    c1.rotatRight();
+                    repaint();
+                //rotar a la izquierda
+                }else if(e.getKeyCode() == KeyEvent.VK_2){
+                    c1.rotateLeft();
+                    repaint();
+                //scalar (Aumentar)
+                }else if(e.getKeyCode() == KeyEvent.VK_3){
+                    c1.scalingUp();
+                    repaint();
+                //scalar (reducir)
+                }else if(e.getKeyCode() == KeyEvent.VK_4){
+                    c1.scalingDown();
+                    repaint();
+                }
+            }
+});
     }
 
     @Override
@@ -60,7 +100,6 @@ public class MiCanvasHugo extends Canvas {
         BufferedImage image = new BufferedImage(maxX,maxY, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         paintCuadricula(g2);
-        
         asignarV(g2);
        c1.paint(g2, draw, fill);
         
