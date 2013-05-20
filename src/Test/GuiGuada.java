@@ -4,8 +4,6 @@
  */
 package Test;
 
-import Principales.CustomCanvas;
-import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 

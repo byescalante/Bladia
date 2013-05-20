@@ -49,6 +49,7 @@ public class CanvasGuadalupe extends Canvas {
     private Color c = Color.BLACK;
     //====== composit por defualt.
     private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
+    Pentagono pen = new Pentagono(1,4,2,1,6,1,7,4,4,6);
     
    
     //private Square cu = new Square(-2, 2, 4, 4);
@@ -56,12 +57,106 @@ public class CanvasGuadalupe extends Canvas {
         Abstract.VarCustomCanvas.rwidth = rwidth;
         Abstract.VarCustomCanvas.rheight = rheight;
         setBackground(Color.WHITE);
+        addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+                    pen.moveLeft();
+                    repaint();
+                    
+                }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+                    pen.moveRight();
+                    repaint();
+                }else if(e.getKeyCode()==KeyEvent.VK_UP){
+                    pen.moveUp();
+                    repaint();
+                }else if(e.getKeyCode()==KeyEvent.VK_DOWN){
+                    pen.moveDwon();
+                repaint();
+                    
+                    
+                }else if(e.getKeyCode() == KeyEvent.VK_1){
+                    pen.RatationLeft();
+                    repaint();
+                /**
+                 * Rotar a la Derecha
+                 */
+                }else if(e.getKeyCode() == KeyEvent.VK_2){
+                    pen.RatationRight();
+                    repaint();
+                /**
+                 * Scalar en Incremento
+                 */
+                }else if(e.getKeyCode() == KeyEvent.VK_3){
+                    pen.ScaleUp();
+                    repaint();
+                /**
+                 * Escalar en Decremento
+                 */
+                }else if(e.getKeyCode() == KeyEvent.VK_4){
+                    pen.ScaleDown();
+                    repaint();
+                }
+                    
+            }
+            
+             });
        
-    
+        }
+
+    @Override
+    public void paint(Graphics g) {
+        iniciarVAr(this);
+        BufferedImage image = new BufferedImage(maxX,maxY, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) image.createGraphics();
+        paintCuadricula(g2);
+        asignarV(g2);
+        pen.paint(g2, draw, fill);
+        g.drawImage(image, 0, 0, this);
+    }
+    /**
+     * 
+     * @param g2  un graphics donde se va a pintar.
+     */
+    public void asignarV(Graphics2D g2){
+        if (isColor) {
+            g2.setColor(c);
+        }else if(isGradient){
+            gradient = new GradientPaint(left, top, one, right, botton, two);
+            g2.setPaint(gradient);
+        }
+        switch (asigStrock) {
+            case 0:
+                g2.setStroke(Strocks.simple);
+                break;
+            case 1:
+                g2.setStroke(Strocks.medio);
+                break;
+            case 2:
+                g2.setStroke(Strocks.completo);
+                break;
+        }
+        g2.setComposite(composite);
         
     }
+
+    public void setComposite(float x) {
+        composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, x);
+    }
     
-}
+    /**
+     * 
+     * @param g Graphics que actualiza el pintado del canvas.
+     */
+    @Override
+    public void update(Graphics g) {
+        paint(g);
+    }
+       
+    }
+    
+            
    
       
        
