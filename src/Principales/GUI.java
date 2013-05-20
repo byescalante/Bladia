@@ -17,6 +17,6 @@ public class GUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 750);
         setLocationRelativeTo(this);
-        add("Center", new CustomCanvas(18.0F, 18.0F));
+        
     }
 }
