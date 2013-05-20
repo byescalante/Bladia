@@ -5,6 +5,7 @@
 package Test;
 
 
+import Basicas.QuadCurv2;
 import Abstract.Strocks;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -53,7 +54,7 @@ public class CanvasJonathan extends Canvas {
     //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
     //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
     //private Arco2 arc = new Arco2(-2, 2 , 4, 4);
-    private QuadCurvByeEscalante curve = new QuadCurvByeEscalante(rwidth, rwidth, rwidth, rwidth);
+    private QuadCurv2 curve = new QuadCurv2(-3, 3, 3, 3);
     /**
      * 
      * @param rwidth

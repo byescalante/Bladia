@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package Basicas;
 
 import java.awt.geom.GeneralPath;
 import static Abstract.VarCustomCanvas.*;
@@ -14,15 +14,15 @@ import java.awt.geom.QuadCurve2D;
  *
  * @author byescalante
  */
-public class QuadCurvByeEscalante {
+public class QuadCurv2 {
     private float x1,y1,x3,y3;
-    private float x2 = convertFisicX(1);
-    private float y2 = convertFisicY(1);
+    private float x2 = 0;
+    private float y2 = 0;
     private boolean calcularVar = true;
     private QuadCurve2D curve;
     private GeneralPath path;
 
-    public QuadCurvByeEscalante(float x1, float y1,float x3, float y3) {
+    public QuadCurv2(float x1, float y1,float x3, float y3) {
         this.x1 = x1;
         this.y1 = y1;
         this.x3 = x3;
@@ -109,5 +109,13 @@ public class QuadCurvByeEscalante {
         t.scale(0.9, 0.9);
         path.transform(t); 
      }
+
+    public void setPoint(float x2,float y2){
+        this.x2 = x2;
+        this.y2 = y2;
+        calcularVar = true;
+    }
+     
+     
     
 }
