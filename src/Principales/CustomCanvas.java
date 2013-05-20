@@ -3,25 +3,27 @@
  * and open the template in the editor.
  */
 package Principales;
+
+
+import Basicas.QuadCurv2;
 import Abstract.Strocks;
-import static Abstract.VarCustomCanvas.*;
-import Basicas.Square;
-import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
+import static Abstract.VarCustomCanvas.*;
+import java.awt.AlphaComposite;
+import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+
 /**
  *
- * @author escalante 
- * clase Canvas Principal.
+ * @author Amairani
  */
-public class CustomCanvas extends Canvas{
+public class CustomCanvas extends Canvas {
     //====== Pinta el borde del poligono si la variable es verdadera(true).
     private boolean draw = true;
     //====== pinta el relleno del poligono si la variable es verdadera(true). 
@@ -34,7 +36,7 @@ public class CustomCanvas extends Canvas{
     private int polygonPaint = 0;
     //====== define un stroke por default.
     private Stroke st = Strocks.simple;
-    //====== indica el tipo de strok a pintar.
+    //====== iIndica el tipo de strok a pintar.
     private int asigStrock = 0;
     //====== crea un objeto de tipo grandient.
     private GradientPaint gradient;
@@ -46,7 +48,13 @@ public class CustomCanvas extends Canvas{
     private Color c = Color.BLACK;
     //====== composit por defualt.
     private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
-    private Square cu = new Square(-2, 2, 4, 4);
+    //private Square cu = new Square(-2, 2, 4, 4);
+    //private Elipse2D eli = new Elipse2D(-2, 2, 4, 4);
+    //private Line2DPruebaByEscalante line = new Line2DPruebaByEscalante(-2, 0, 2, 0);
+    //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
+    //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
+    //private Arco2 arc = new Arco2(-2, 2 , 4, 4);
+    private QuadCurv2 curve = new QuadCurv2(-3, 3, 3, 3);
     /**
      * 
      * @param rwidth
@@ -63,29 +71,53 @@ public class CustomCanvas extends Canvas{
              */
             @Override
             public void keyPressed(KeyEvent e) { 
+                /**
+                 * Mover a la Izquierda
+                 */
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    cu.moveLeft();
+                    curve.moveLeft();
                     repaint();
+                /**
+                 * Mover hacia la Derecha
+                 */    
                 }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                    cu.moveRight();
+                    curve.moveRight();
                     repaint();
+                /**
+                 * Mover hacia Arriba
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_UP){
-                    cu.moveUp();
+                    curve.moveUp();
                     repaint();
+                /**
+                 * Mover hacia Abajo
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    cu.moveDwon();
+                    curve.moveDwon();
                     repaint();
+                /**
+                 * Rotar a la Izquierda
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_1){
-                    cu.RatationLeft();
+                    curve.RatationLeft();
                     repaint();
+                /**
+                 * Rotar a la Derecha
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_2){
-                    cu.RatationRight();
+                    curve.RatationRight();
                     repaint();
+                /**
+                 * Scalar en Incremento
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_3){
-                    cu.ScaleUp();
+                    curve.ScaleUp();
                     repaint();
+                /**
+                 * Escalar en Decremento
+                 */
                 }else if(e.getKeyCode() == KeyEvent.VK_4){
-                    cu.ScaleDown();
+                    curve.ScaleDown();
                     repaint();
                 }
                 
@@ -97,6 +129,7 @@ public class CustomCanvas extends Canvas{
      * 
      * @param g Grafics principal sobre el que se pinta.
      */
+   
     @Override
     public void paint(Graphics g){
         iniciarVAr(this);
@@ -104,7 +137,7 @@ public class CustomCanvas extends Canvas{
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         paintCuadricula(g2);
         asignarV(g2);
-        cu.paint(g2, draw, fill);
+        curve.paint(g2, draw);
         g.drawImage(image, 0, 0, this);
     }
     /**
@@ -133,6 +166,12 @@ public class CustomCanvas extends Canvas{
         
     }
 
+    public void setComposite(float x) {
+        composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, x);
+    }
+    
+    
+
     /**
      * 
      * @param g Graphics que actualiza el pintado del canvas.
@@ -141,6 +180,4 @@ public class CustomCanvas extends Canvas{
     public void update(Graphics g) {
         paint(g);
     }
-    
-    
 }

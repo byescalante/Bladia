@@ -4,6 +4,7 @@
  */
 package Test;
 
+import Principales.CustomCanvas;
 import javax.swing.JFrame;
 
 /**
@@ -19,7 +20,7 @@ public class GUIByEscalante extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 750);
         setLocationRelativeTo(this);
-        add("Center", new CanvasJonathan(18.0F, 18.0F));
+        add("Center", new CustomCanvas(18.0F, 18.0F));
     }
     
     
