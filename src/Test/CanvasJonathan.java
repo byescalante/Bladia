@@ -5,8 +5,6 @@
 package Test;
 
 
-import Basicas.Arco2;
-import Basicas.Triangle;
 import Abstract.Strocks;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -54,7 +52,8 @@ public class CanvasJonathan extends Canvas {
     //private Line2DPruebaByEscalante line = new Line2DPruebaByEscalante(-2, 0, 2, 0);
     //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
     //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
-    private Arco2 arc = new Arco2(-2, 2 , 4, 4);
+    //private Arco2 arc = new Arco2(-2, 2 , 4, 4);
+    private QuadCurvByeEscalante curve = new QuadCurvByeEscalante(rwidth, rwidth, rwidth, rwidth);
     /**
      * 
      * @param rwidth
@@ -75,49 +74,49 @@ public class CanvasJonathan extends Canvas {
                  * Mover a la Izquierda
                  */
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    arc.moveLeft();
+                    curve.moveLeft();
                     repaint();
                 /**
                  * Mover hacia la Derecha
                  */    
                 }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                    arc.moveRight();
+                    curve.moveRight();
                     repaint();
                 /**
                  * Mover hacia Arriba
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_UP){
-                    arc.moveUp();
+                    curve.moveUp();
                     repaint();
                 /**
                  * Mover hacia Abajo
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    arc.moveDwon();
+                    curve.moveDwon();
                     repaint();
                 /**
                  * Rotar a la Izquierda
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_1){
-                    arc.RatationLeft();
+                    curve.RatationLeft();
                     repaint();
                 /**
                  * Rotar a la Derecha
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_2){
-                    arc.RatationRight();
+                    curve.RatationRight();
                     repaint();
                 /**
                  * Scalar en Incremento
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_3){
-                    arc.ScaleUp();
+                    curve.ScaleUp();
                     repaint();
                 /**
                  * Escalar en Decremento
                  */
                 }else if(e.getKeyCode() == KeyEvent.VK_4){
-                    arc.ScaleDown();
+                    curve.ScaleDown();
                     repaint();
                 }
                 
@@ -137,7 +136,7 @@ public class CanvasJonathan extends Canvas {
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         paintCuadricula(g2);
         asignarV(g2);
-        arc.paint(g2, draw, fill);
+        curve.paint(g2, draw);
         g.drawImage(image, 0, 0, this);
     }
     /**
