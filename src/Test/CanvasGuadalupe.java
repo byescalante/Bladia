@@ -5,102 +5,64 @@
 package Test;
 
 
+import Abstract.Strocks;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
+import static Abstract.VarCustomCanvas.*;
+import Basicas.Square;
+import java.awt.AlphaComposite;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import java.awt.image.BufferedImage;
 
 /**
  *
  * @author Amairani
  */
 public class CanvasGuadalupe extends Canvas {
-    private int centerX,centerY,left, right,top,bottom,xmiddle,ymiddle;
-    private float pixelSize,rHeight,rWidth;
-
-  
+      //====== Pinta el borde del poligono si la variable es verdadera(true).
+    private boolean draw = true;
+    //====== pinta el relleno del poligono si la variable es verdadera(true). 
+    private boolean fill = false;
+    //====== pinta el pligono con un color si la variable es verdadera(true).
+    private boolean isColor = true;
+     //====== pinta el poligono con un gradiente si la variable es verdadera(true).
+    private boolean isGradient = false;
+     //====== determina el poligono que se desea dibujar.
+    private int polygonPaint = 0;
+    //====== define un stroke por default.
+    private Stroke st = Strocks.simple;
+    //====== indica el tipo de strok a pintar.
+    private int asigStrock = 0;
+    //====== crea un objeto de tipo grandient.
+    private GradientPaint gradient;
+    //====== define el primer color del gradient.
+    private Color one = Color.BLUE;
+    //====== define el segundo color del gradient.
+    private Color two = Color.GREEN;
+    //====== color por default.
+    private Color c = Color.BLACK;
+    //====== composit por defualt.
+    private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
     
-    public CanvasGuadalupe() {
-     
-        this.rHeight = 10.10F;
-        this.rWidth = 10.10F;
-        setBackground(Color.WHITE);
-    }
-    public CanvasGuadalupe(float rWidth, float rHeight) {
-        super();
-        this.rHeight = rHeight;
-        this.rWidth = rWidth;
-        setBackground(Color.WHITE);
-    }
-    public void iniciarval(){
-       Dimension d = getSize();
-       int maxX = d.width-1;
-       int maxY = d.height-1;
-       centerX = maxX/2;
-       centerY = maxY/2;
-       pixelSize = Math.max(rWidth/maxX,rHeight/maxY);
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        iniciarval();
-        pintarCuadro(g);
-    }
    
-    public void pintarCuadro(Graphics g){
-       left = toFisicoX(-rWidth/2);
-       right = toFisicoX(rWidth/2);
-       top = toFisicoY(rHeight/2);
-       bottom = toFisicoY(-rHeight/2);
-        System.out.println(rHeight);
-       xmiddle = toFisicoX(0);
-       ymiddle = toFisicoY(0);
+    //private Square cu = new Square(-2, 2, 4, 4);
+    public CanvasGuadalupe( float rwidth, float rheight) {
+        Abstract.VarCustomCanvas.rwidth = rwidth;
+        Abstract.VarCustomCanvas.rheight = rheight;
+        setBackground(Color.WHITE);
        
-       g.setColor(Color.LIGHT_GRAY);
-        for (float i =-rWidth/2; i < rWidth/2; i+=0.1F) {
-             g.drawLine(toFisicoX(i),top,toFisicoX(i),bottom);
-            
-        }
-        g.setColor(Color.LIGHT_GRAY);
-        for (float i = -rHeight/2; i < rHeight/2; i+=0.1F) {
-            g.drawLine(left, toFisicoY(i), right, toFisicoY(i));
-            
-        }
-       
-       
-        for (int i =  Math.round(-rWidth/2); i < Math.round(rWidth/2); i++) {
-            g.drawLine(toFisicoX(i),top,toFisicoX(i),bottom);
-            g.drawString(""+i, toFisicoX(i),ymiddle);
-            g.setColor(Color.DARK_GRAY);
-            
-        }
-        for (int i = Math.round(-rHeight/2); i < Math.round(rHeight/2); i++) {
-            g.drawLine( left,toFisicoY(i), right,toFisicoY(i));
-             g.drawString(""+i, xmiddle, toFisicoY(i));
-            g.setColor(Color.DARK_GRAY);
-           
-            
-        }
-      g.setColor(Color.BLACK);
-       g.drawLine(left, top, right,top);
-       g.drawLine(right,top,right, bottom);
-       g.drawLine(right,bottom,left, bottom);
-       g.drawLine(left, bottom,left, top);
-       
-       g.setColor(Color.BLACK);
-       g.drawLine( xmiddle,top,xmiddle,bottom);
-       g.drawLine(left,ymiddle,right,ymiddle);
+    
+        
     }
-   private int toFisicoX(float x){
-       return Math.round(centerX+x/pixelSize);
-   } 
-   private int toFisicoY(float y){
-       return Math.round(centerY-y/pixelSize);
-   } 
-   private float realX(int x){
-       return (x-centerX)*pixelSize;
-   }
-   private  float realY (int y){
-       return (centerY-y)*pixelSize;
-   }
+    
 }
+   
+      
+       
+
