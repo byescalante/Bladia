@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package Principales;
-import Test.*;
 import Basicas.QuadCurv2;
 import Abstract.Strocks;
 import java.awt.Canvas;
