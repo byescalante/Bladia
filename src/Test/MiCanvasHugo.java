@@ -4,26 +4,24 @@
  */
 package Test;
 
-
-import Basicas.QuadCurv2;
 import Abstract.Strocks;
+import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Graphics;
-import static Abstract.VarCustomCanvas.*;
-import java.awt.AlphaComposite;
 import java.awt.GradientPaint;
-import java.awt.Graphics2D;
 import java.awt.Stroke;
+import static Abstract.VarCustomCanvas.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
  *
- * @author Amairani
+ * @author hugo
  */
-public class CanvasJonathan extends Canvas {
+public class MiCanvasHugo extends Canvas {
     //====== Pinta el borde del poligono si la variable es verdadera(true).
     private boolean draw = true;
     //====== pinta el relleno del poligono si la variable es verdadera(true). 
@@ -36,7 +34,7 @@ public class CanvasJonathan extends Canvas {
     private int polygonPaint = 0;
     //====== define un stroke por default.
     private Stroke st = Strocks.simple;
-    //====== iIndica el tipo de strok a pintar.
+    //====== indica el tipo de strok a pintar.
     private int asigStrock = 0;
     //====== crea un objeto de tipo grandient.
     private GradientPaint gradient;
@@ -45,105 +43,70 @@ public class CanvasJonathan extends Canvas {
     //====== define el segundo color del gradient.
     private Color two = Color.GREEN;
     //====== color por default.
-    private Color c = Color.BLACK;
+    private Color c = Color.red;
     //====== composit por defualt.
     private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
-    //private Square cu = new Square(-2, 2, 4, 4);
-    //private Elipse2D eli = new Elipse2D(-2, 2, 4, 4);
-    //private Line2DPruebaByEscalante line = new Line2DPruebaByEscalante(-2, 0, 2, 0);
-    //private RounRectanglePruebaByEscalante rect = new RounRectanglePruebaByEscalante(-2, 2, 4, 8, 50, 50);
-    //private Triangle2DPruebaByEscalante triangle = new Triangle2DPruebaByEscalante(0, 4, 3, 0, -3, 0);
-    //private Arco2 arc = new Arco2(-2, 2 , 4, 4);
-    private QuadCurv2 curve = new QuadCurv2(-3, 3, 3, 3);
-    /**
-     * 
-     * @param rwidth
-     * @param rheight 
-     */
-    public CanvasJonathan(float rwidth, float rheight) {
+    
+    private Roundrectangle2D c1 = new Roundrectangle2D(-4, 4, 8, 8, 1, 1);
+
+    public MiCanvasHugo(float rwidth, float rheight) {
         Abstract.VarCustomCanvas.rwidth = rwidth;
         Abstract.VarCustomCanvas.rheight = rheight;
         setBackground(Color.WHITE);
         addKeyListener(new KeyAdapter() {
-            
-            /**
-             * Devuelve un vento del teclado.
-             */
+
             @Override
-            public void keyPressed(KeyEvent e) { 
-                /**
-                 * Mover a la Izquierda
-                 */
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    curve.moveLeft();
+            public void keyPressed(KeyEvent e) {
+                //mover hacia la izquierda
+                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    c1.moveLeft();
                     repaint();
-                /**
-                 * Mover hacia la Derecha
-                 */    
+                    //mover hacia la derecha
                 }else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                    curve.moveRight();
+                    c1.rightMove();
                     repaint();
-                /**
-                 * Mover hacia Arriba
-                 */
+                //mover hacia arriba
                 }else if(e.getKeyCode() == KeyEvent.VK_UP){
-                    curve.moveUp();
+                    c1.moveUp();
                     repaint();
-                /**
-                 * Mover hacia Abajo
-                 */
+                //mover hacia abajo
                 }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                    curve.moveDwon();
+                    c1.moveDown();
                     repaint();
-                /**
-                 * Rotar a la Izquierda
-                 */
+                //rotar hacia la derecha
                 }else if(e.getKeyCode() == KeyEvent.VK_1){
-                    curve.RatationLeft();
+                    c1.rotatRight();
                     repaint();
-                /**
-                 * Rotar a la Derecha
-                 */
+                //rotar a la izquierda
                 }else if(e.getKeyCode() == KeyEvent.VK_2){
-                    curve.RatationRight();
+                    c1.rotateLeft();
                     repaint();
-                /**
-                 * Scalar en Incremento
-                 */
+                //scalar (Aumentar)
                 }else if(e.getKeyCode() == KeyEvent.VK_3){
-                    curve.ScaleUp();
+                    c1.scalingUp();
                     repaint();
-                /**
-                 * Escalar en Decremento
-                 */
+                //scalar (reducir)
                 }else if(e.getKeyCode() == KeyEvent.VK_4){
-                    curve.ScaleDown();
+                    c1.scalingDown();
                     repaint();
                 }
-                
             }
-            
-        });
+});
     }
-    /**
-     * 
-     * @param g Grafics principal sobre el que se pinta.
-     */
-   
+
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         iniciarVAr(this);
         BufferedImage image = new BufferedImage(maxX,maxY, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) image.createGraphics();
         paintCuadricula(g2);
         asignarV(g2);
-        curve.paint(g2, draw);
+       c1.paint(g2, draw, fill);
+        
+        
         g.drawImage(image, 0, 0, this);
     }
-    /**
-     * 
-     * @param g2  un graphics donde se va a pintar.
-     */
+    
     public void asignarV(Graphics2D g2){
         if (isColor) {
             g2.setColor(c);
@@ -166,18 +129,10 @@ public class CanvasJonathan extends Canvas {
         
     }
 
-    public void setComposite(float x) {
-        composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, x);
-    }
-    
-    
-
-    /**
-     * 
-     * @param g Graphics que actualiza el pintado del canvas.
-     */
     @Override
     public void update(Graphics g) {
-        paint(g);
+                paint(g);
     }
+    
+    
 }
