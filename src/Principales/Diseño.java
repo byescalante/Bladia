@@ -53,6 +53,7 @@ public class Diseño extends javax.swing.JFrame {
         jScrollBar1 = new javax.swing.JScrollBar();
         grupo = new javax.swing.ButtonGroup();
         grupo_relleno = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
         panel_Herramientas = new javax.swing.JPanel();
         slide_transparencia = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
@@ -84,7 +85,10 @@ public class Diseño extends javax.swing.JFrame {
         boton_Decremento = new javax.swing.JButton();
         botonRotarDerecha = new javax.swing.JButton();
         botonRotarIzquierda = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         canvas = new Principales.CustomCanvas();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -412,6 +416,9 @@ public class Diseño extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 153));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ultimo12.png"))); // NOI18N
+
         javax.swing.GroupLayout panel_MovimientosLayout = new javax.swing.GroupLayout(panel_Movimientos);
         panel_Movimientos.setLayout(panel_MovimientosLayout);
         panel_MovimientosLayout.setHorizontalGroup(
@@ -426,20 +433,25 @@ public class Diseño extends javax.swing.JFrame {
                         .addComponent(boton_abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
+                .addGap(0, 11, Short.MAX_VALUE)
                 .addComponent(boton_Izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(boton_Derecha, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_escalarIncrement, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panel_MovimientosLayout.createSequentialGroup()
                 .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonRotarDerecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_Decremento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                    .addGroup(panel_MovimientosLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boton_escalarIncrement, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boton_Decremento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonRotarDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel_MovimientosLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_MovimientosLayout.setVerticalGroup(
             panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,14 +464,16 @@ public class Diseño extends javax.swing.JFrame {
                     .addComponent(boton_Izquierda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boton_abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
+                .addGap(38, 38, 38)
                 .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(boton_escalarIncrement)
                     .addComponent(boton_Decremento))
-                .addGap(146, 146, 146)
-                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonRotarDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRotarDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -653,6 +667,8 @@ public class Diseño extends javax.swing.JFrame {
     private javax.swing.JComboBox comboBox_Stroke;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.ButtonGroup grupo_relleno;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
