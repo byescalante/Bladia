@@ -19,13 +19,22 @@ public class Linea2D {
     private Line2D line;
     private boolean calcularVar = true;
     private GeneralPath path;
-
+    /**
+     * 
+     * @param x Variabel flotante que formara parte del punto de inicio.
+     * @param y Variabel flotante que formara parte del punto de inicio.
+     * @param x1 Variabel flotante que formara parte del punto final de inicio.
+     * @param y1 Variabel flotante que formara parte del punto final de inicio.
+     */
     public Linea2D(float x, float y, float x1, float y1) {
         this.x = x;
         this.y = y;
         this.x1 = x1;
         this.y1 = y1;
     }
+    /**
+     * Se inicializan las variables del la Line2D.
+     */
     public void calcular(){
         this.x = convertFisicX(x);
         this.y = convertFisicY(y);
@@ -34,7 +43,11 @@ public class Linea2D {
         line = new Line2D.Float(x1, y1, x, y);
         path = new GeneralPath(line);
     }
-    
+    /**
+     * 
+     * @param g es el grapchis sobre el cual se va pintar.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     */
     public void paint(Graphics2D g,boolean draw){
         if (calcularVar) {
              calcular();
@@ -44,7 +57,9 @@ public class Linea2D {
              g.draw(path);
          }
      }
-    
+    /**
+     * Mover a la Izquierda.
+     */
     public void moveLeft(){
          AffineTransform t = new AffineTransform();
          t.translate(-3, 0);

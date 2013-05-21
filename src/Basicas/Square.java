@@ -14,7 +14,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class Square {
     /**
-     * Variables con las se va a crear el cuadrado.
+     * Variables con las se va a crear el cuadrado2D.
      */
     private float x,y,largo,alto;
     private Rectangle2D rec;
@@ -25,7 +25,7 @@ public class Square {
      * @param x Es el valor real del punto de inicio.
      * @param y Es el valor real del punto de inicio.
      * @param largo Es el tamaño que tendra apartir del de las coordenadas de inicio.
-     * @param alto Es la distancia que tendra hacia abajo aprtir de las cordenadas de inicio
+     * @param alto Es la distancia que tendra hacia abajo aprtir de las cordenadas de inicio.
      */
     public Square(float x, float y, float largo, float alto) {
         this.x = x;
@@ -48,8 +48,8 @@ public class Square {
     /**
      * 
      * @param g Es grafics sobre el cual se va pintar.
-     * @param draw Es un boleando que define si pintara el contorno.
-     * @param fill Es un boleando que define si pintara el relleno.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     * @param fill Variable booleana que determina si se va a pintar con relleno.
      */
      public void paint(Graphics2D g,boolean draw,boolean fill){
          if (calcularVar) {

@@ -8,24 +8,34 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
-
 /**
  *
  * @author escalante
  */
 public class Elipse2D{
+    /**
+     * Variables de alcanse para crear el Ellipse2D.
+     */
     private float x,y,largo,alto;
     private Ellipse2D elipse;
     private GeneralPath path;
     private boolean calcularVar = true;
-
+    /**
+     * 
+     * @param x variable flotante que formara parte del punto de inicio.
+     * @param y variable flotante que formara parte del punto de inicio.
+     * @param largo variable flotante que determinara el largo del Ellipse2D.
+     * @param alto variable flotante que determinara el largo del Ellipse2D.
+     */
     public Elipse2D(float x, float y, float largo, float alto) {
         this.x = x;
         this.y = y;
         this.largo = largo;
         this.alto = alto;
     }
-    
+    /**
+     *  Se inicializan las variables del Ellipse2D.
+     */
     public void calcular(){
         this.x = convertFisicX(x);
         this.y = convertFisicY(y);
@@ -34,7 +44,12 @@ public class Elipse2D{
         elipse = new Ellipse2D.Float(this.x, this.y, this.largo, this.alto);
         path = new GeneralPath(elipse);
     }
-    
+    /**
+     * 
+     * @param g Es el grafics sobre el cual se va a pintar.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     * @param fill Variable booleana que determina si se va a pintar con relleno.
+     */
     public void paint(Graphics2D g,boolean draw,boolean fill){
         if (calcularVar) {
              calcular();
@@ -49,7 +64,9 @@ public class Elipse2D{
              g.fill(path);
          }
      }
-    
+    /**
+     * Mover a la Izquierda.
+     */
      public void moveLeft(){
          AffineTransform t = new AffineTransform();
          t.translate(-3, 0);

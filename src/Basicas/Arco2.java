@@ -15,6 +15,9 @@ import java.awt.geom.AffineTransform;
  * @author byescalante
  */
 public class Arco2 {
+    /**
+     * variables de alcanse para crear el arc2D.
+     */
     private float x,y,largo,alto;
     private float startAngle = 0;
     private float angleEnd = 325;
@@ -36,7 +39,7 @@ public class Arco2 {
         this.alto = alto;
     }
     /**
-     * 
+     * Se inicializan las variables del arc2D.
      */
     public void calcular(){
         this.x = convertFisicX(x);
@@ -49,8 +52,8 @@ public class Arco2 {
     /**
      * 
      * @param g Graphcis sobre el cual se pinta.
-     * @param draw Determina si se pintara el contorno.
-     * @param fill Determina si se pinta con relleno.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     * @param fill Variable booleana que determina si se va a pintar con relleno.
      */
     public void paint(Graphics2D g,boolean draw,boolean fill){
         if (calcularVar) {
@@ -132,14 +135,14 @@ public class Arco2 {
      }
      /**
       * 
-      * @return 
+      * @return Obtiene el valor del angulo inicial
       */
     public float getAngleEnd() {
         return angleEnd;
     }
     /**
      * 
-     * @param angleEnd 
+     * @param angleEnd Envia el valor del angulo final del Arc2D
      */
     public void setAngleEnd(float angleEnd) {
         this.angleEnd = angleEnd;
@@ -147,14 +150,14 @@ public class Arco2 {
     }
     /**
      * 
-     * @return 
+     * @return Determina el tipo de cierrre del Arc2D
      */
     public int getType() {
         return type;
     }
     /**
      * 
-     * @param type 
+     * @param type Envial el tipo de cierre del Arc2D
      */
     public void setType(int type) {
         switch (type) {

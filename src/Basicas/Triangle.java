@@ -14,11 +14,22 @@ import java.awt.geom.AffineTransform;
  * @author Amairani
  */
 public class Triangle {
-     private float x1,x2,x3,y1,y2,y3;
- 
+    /**
+     * Variables de alanse con las se va a crear el Triangle2D.
+     */
+    private float x1,x2,x3,y1,y2,y3;
     GeneralPath path;
     boolean calcularvarr = true;
     Triangle  tria;
+    /**
+     * 
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @param x3
+     * @param y3 
+     */
      public Triangle(float x1, float y1, float x2, float y2, float x3, float y3) {
         this.x1 = x1;
         this.x2 = x2;
@@ -27,6 +38,9 @@ public class Triangle {
         this.y2 = y2;
         this.y3 = y3;
     }
+     /**
+      * Se inicializan las variables del Triangle. 
+      */
     public  void calcularvar(){
         this.x1 = convertFisicX(x1);
         this.y1 = convertFisicY(y1);
@@ -40,6 +54,12 @@ public class Triangle {
         path.lineTo(x3, y3);
         path.closePath();
     }
+    /**
+     * 
+     * @param g2 Graphics sobre el cual se va a pintar.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     * @param fill Variable booleana que determina si se va a pintar con relleno.
+     */
      public  void paint(Graphics2D g2, boolean draw, boolean fill ){
          if (calcularvarr) {
              calcularvar();
@@ -55,6 +75,9 @@ public class Triangle {
             g2.fill(path);
         }
     }
+     /**
+      * Mover a la Izquierda.
+      */
     public void moveLeft(){
          AffineTransform t = new AffineTransform();
          t.translate(-3, 0);

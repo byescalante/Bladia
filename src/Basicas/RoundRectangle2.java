@@ -15,11 +15,22 @@ import java.awt.geom.AffineTransform;
  * @author byescalante
  */
 public class RoundRectangle2 {
+    /**
+     * Variables de alcanse con las que se va a crear el RoundRect2D.
+     */
     private float x,y,largo,alto,curveWidth,longCurve;
     private  RoundRectangle2D rectangle;
     private boolean calcularVar= true;
     private GeneralPath path;
-
+    /**
+     * 
+     * @param x Variabel flotante que formara parte del punto de inicio.
+     * @param y Variabel flotante que formara parte del punto de inicio.
+     * @param largo Es el tamaño que tendra apartir del de las coordenadas de inicio.
+     * @param alto Es la distancia que tendra hacia abajo aprtir de las cordenadas de inicio.
+     * @param curveWidth Variable flotante que determinara la dimension de la curva sobre el width. 
+     * @param longCurve Variable flotante que determinara la dimension de la curva sobre el Height.
+     */
     public RoundRectangle2(float x, float y, float largo, float alto, float curveWidth, float longCurve) {
         this.x = x;
         this.y = y;
@@ -28,7 +39,9 @@ public class RoundRectangle2 {
         this.curveWidth = curveWidth;
         this.longCurve = longCurve;
     }
-    
+    /**
+     * Se inicializan las variables del RoundRect.
+     */
     public void calcular(){
         this.x = convertFisicX(x);
         this.y = convertFisicY(y);
@@ -39,7 +52,12 @@ public class RoundRectangle2 {
         rectangle = new RoundRectangle2D.Float(this.x, this.y, this.largo, this.alto,this.curveWidth , this.longCurve);
         path = new GeneralPath(rectangle);
     }
-    
+    /**
+     * 
+     * @param g Es el graphics sobre el cual se va a pintar.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     * @param fill Variable booleana que determina si se va a pintar con relleno.
+     */
     public void paint(Graphics2D g,boolean draw,boolean fill){
         if (calcularVar) {
              calcular();
@@ -54,7 +72,9 @@ public class RoundRectangle2 {
              g.fill(path);
          }
      }
-    
+    /**
+     * Mover a la Izquierda.
+     */
     public void moveLeft(){
          AffineTransform t = new AffineTransform();
          t.translate(-3, 0);

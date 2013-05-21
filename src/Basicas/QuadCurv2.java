@@ -15,6 +15,9 @@ import java.awt.geom.QuadCurve2D;
  * @author byescalante
  */
 public class QuadCurv2 {
+    /**
+     * Variable de alcanse con ls que se va a crear el QuadCurve2D.
+     */
     private float x1,y1,x3,y3;
     private float x2 = 0;
     private float y2 = 0;
@@ -22,14 +25,22 @@ public class QuadCurv2 {
     private QuadCurve2D curve;
     private GeneralPath path;
     private boolean vez = true;
-    
+    /**
+     * 
+     * @param x1 Variabel flotante que formara parte del punto de inicio.
+     * @param y1 Variabel flotante que formara parte del punto de inicio.
+     * @param x3 Variabel flotante que formara parte del punto de final.
+     * @param y3 Variabel flotante que formara parte del punto de final.
+     */
     public QuadCurv2(float x1, float y1,float x3, float y3) {
         this.x1 = x1;
         this.y1 = y1;
         this.x3 = x3;
         this.y3 = y3;
     }
-    
+    /**
+     * Se inicializan las variables del QuadCurve.
+     */
     public void calcular(){
         if (vez) {
             this.x1 = convertFisicX(x1);
@@ -41,7 +52,11 @@ public class QuadCurv2 {
         curve = new QuadCurve2D.Float(x1, y1, x2, y2, x3, y3);
         path = new GeneralPath(curve);
     }
-    
+    /**
+     * 
+     * @param g Es el graphics sobre el cual se va a pintar.
+     * @param draw Variable booleana que determina si se va a pintar el contorno.
+     */
     public void paint(Graphics2D g,boolean draw){
         if (calcularVar) {
              calcular();
@@ -52,7 +67,9 @@ public class QuadCurv2 {
              g.draw(path);
          }
      }
-    
+    /**
+     * Mover a la Izquierda.
+     */
     public void moveLeft(){
          AffineTransform t = new AffineTransform();
          t.translate(-3, 0);
