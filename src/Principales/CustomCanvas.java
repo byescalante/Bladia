@@ -28,43 +28,69 @@ import java.awt.image.BufferedImage;
  * @author Amairani
  */
 public class CustomCanvas extends Canvas {
-    //====== Pinta el borde del poligono si la variable es verdadera(true).
+    /**
+     * Pinta el borde del poligono si la variable es verdadera(true).
+     */
     private boolean draw = true;
-    //====== pinta el relleno del poligono si la variable es verdadera(true). 
+    /**
+     * Pinta el relleno del poligono si la variable es verdadera(true).
+     */ 
     private boolean fill = false;
-    //====== pinta el pligono con un color si la variable es verdadera(true).
+    /**
+     * Pinta el pligono con un color si la variable es verdadera(true).
+     */
     private boolean isColor = true;
-     //====== pinta el poligono con un gradiente si la variable es verdadera(true).
+    /**
+     * Pinta el poligono con un gradiente si la variable es verdadera(true).
+     */
     private boolean isGradient = false;
-     //====== determina el poligono que se desea dibujar.
+     /**
+      * Determina el poligono que se desea dibujar.
+      */
     private int polygonPaint = -1;
-    //====== define un stroke por default.
+    /**
+     * Define un stroke por default.
+     */
     private Stroke st = Strocks.simple;
-    //====== iIndica el tipo de strok a pintar.
+    /**
+     * Indica el tipo de strok a pintar.
+     */
     private int asigStrock = 0;
-    //====== crea un objeto de tipo grandient.
+    /**
+     * Crea un objeto de tipo grandient.
+     */
     private GradientPaint gradient;
-    //====== define el primer color del gradient.
+    /**
+     * Define el primer color del gradient.
+     */
     private Color one = Color.BLUE;
-    //====== define el segundo color del gradient.
+    /**
+     * Define el segundo color del gradient.
+     */
     private Color two = Color.GREEN;
-    //====== color por default.
+    /**
+     * Color por default.
+     */
     private Color c = Color.BLACK;
-    //====== composit por defualt.
+    /**
+     * Composit por defualt.
+     */
     private AlphaComposite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0F);
-    
-    private Arco2 arc = new Arco2(-2, 2 , 4, 4);
-    private Elipse2D elipse = new Elipse2D(-2, 2, 4, 4);
-    private QuadCurv2 curv = new QuadCurv2(-3, 3, 3, 3);
-    private RoundRectangle2 rectangle = new RoundRectangle2(-2, 2, 4, 8, 50, 50);
-    private Square cu = new Square(-2, 2, 4, 4);
-    private Triangle triangle = new Triangle(0, 4, 3, 0, -3, 0);
-    private Linea2D line = new Linea2D(-2, 0, 2, 0);
+    /**
+     * Intancias del paquete Basicas.
+     */
+    private Arco2 arc = new Arco2(-4, 4 , 8, 8);
+    private Elipse2D elipse = new Elipse2D(-3, 3, 6, 6);
+    private QuadCurv2 curv = new QuadCurv2(-4, 4, 4, -4);
+    private RoundRectangle2 rectangle = new RoundRectangle2(-4, 6, 8, 12, 50, 50);
+    private Square cu = new Square(-4, 4, 8, 8);
+    private Triangle triangle = new Triangle(0, 4, 3, -3, -3, -3);
+    private Linea2D line = new Linea2D(-4, 0, 4, 0);
     
     /**
      * 
-     * @param rwidth
-     * @param rheight 
+     * @param rwidth Es el ancho con el que trabaj el canvas.
+     * @param rheight Es el largo con el trabaj el canvas.
      */
     public CustomCanvas(float rwidth, float rheight) {
         Abstract.VarCustomCanvas.rwidth = rwidth;
@@ -152,16 +178,25 @@ public class CustomCanvas extends Canvas {
         g2.setComposite(composite);
         
     }
-
+    /**
+     * 
+     * @param x Variable flotante con la trabaj el AlphaComposite.
+     */
     public void setComposite(float x) {
         composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, x);
         repaint();
     }
-
+    /**
+     * 
+     * @return Retorna el valor del poligono a Pintar.
+     */
     public int getPolygonPaint() {
         return polygonPaint;
     }
-
+    /**
+     * 
+     * @param polygonPaint Envia el valor del poligo a pintar.
+     */
     public void setPolygonPaint(int polygonPaint) {
         this.polygonPaint = polygonPaint;
         repaint();
@@ -175,7 +210,9 @@ public class CustomCanvas extends Canvas {
     public void update(Graphics g) {
         paint(g);
     }
-    
+    /**
+     * Metodo mover a la Inzquierda.
+     */
     public void moveleft(){
         switch (polygonPaint) {
                         case 0:
@@ -211,6 +248,9 @@ public class CustomCanvas extends Canvas {
                    
                     repaint();
     }
+    /**
+     * Metodo mover a la derecha.
+     */
     public void moveRight(){
         switch (polygonPaint) {
                         case 0:
@@ -244,6 +284,9 @@ public class CustomCanvas extends Canvas {
                    }
                     repaint();
     }
+    /**
+     * Metodo mover arriba.
+     */
     public void moveUp(){
         switch (polygonPaint) {
                         case 0:
@@ -277,6 +320,9 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    /**
+     * Metodo mover abajo.
+     */
     public void moveDown(){
         switch (polygonPaint) {
                         case 0:
@@ -310,6 +356,9 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    /**
+     * Metodo rotar a la Izquierda.
+     */
     public void rotationLeft(){
         switch (polygonPaint) {
                         case 0:
@@ -344,6 +393,9 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
+    /**
+     * Metodo rotar a la Derecha.
+     */
     public void rotationRight(){
         switch (polygonPaint) {
                         case 0:
@@ -378,7 +430,9 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
-    
+    /**
+     * Metodo escalar en Incremento.
+     */
     public void scaleUp(){
         switch (polygonPaint) {
                         case 0:
@@ -412,7 +466,9 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
-    
+    /**
+     * Metodo escalar en Decremento.
+     */
     public void scaleDown(){
         switch (polygonPaint) {
                         case 0:
@@ -446,42 +502,67 @@ public class CustomCanvas extends Canvas {
                     }
                     repaint();
     }
-    
+    /**
+     * 
+     * @param n Variable que determina el tipo de Strock.
+     * 
+     */
     public void setStroke(int n){
         asigStrock = n;
         repaint();
     }
-
+    /**
+     * 
+     * @param draw Variable booleana que determina el pintado del contorno.
+     */
     public void setDraw(boolean draw) {
         this.draw = draw;
         repaint();
     }
-
+    /**
+     * 
+     * @param fill Variable booleana que determina el pintado del relleno.
+     */
     public void setFill(boolean fill) {
         this.fill = fill;
          repaint();
     }
-
+    /**
+     * 
+     * @param isColor Variable booleana que determina si se pintara.
+     */
     public void setIsColor(boolean isColor) {
         this.isColor = isColor;
          repaint();
     }
-
+    /**
+     * 
+     * @param isGradient Variable booleana que determina si se pintara un gradiente.
+     */
     public void setIsGradient(boolean isGradient) {
         this.isGradient = isGradient;
          repaint();
     }
-
+    /**
+     * 
+     * @param one Primer color del gradiente.
+     */
     public void setOne(Color one) {
         this.one = one;
          repaint();
     }
-
+    /**
+     * 
+     * @param two Segundo color del gradiente.
+     */
     public void setTwo(Color two) {
         this.two = two;
          repaint();
     }
-
+    /**
+     * 
+     * @param c Variable asiganada para el color por default.
+     */
     public void setC(Color c) {
         this.c = c;
          repaint();

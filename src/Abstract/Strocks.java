@@ -16,7 +16,7 @@ public abstract class Strocks {
      * Variables con las que trabajan los strocks.
      */
     public static float anchoDefault = 3.0F; // ancho por default del strok.
-    public static float delimiter = 4.0F; // determina el tamaño de los Join.
+    public static float delimiter = 4.0F; // determina el tamaño y estilo  de los Join.
     public static float indicatorLine=0; //indica que el strock se inciara con una linea.
     public static float indicatorSpace=1; // indica el tamaño del espacio.
     public static float[] array = {10.0F,4.0F,8.0F,6.0F}; // array con el trabaja el strock completo.
