@@ -69,7 +69,7 @@ public abstract class VarCustomCanvas {
         /**
          * Pinta Cuadro Principal.
          */
-        g.setColor(Color.blue);
+        g.setColor(Color.GREEN);
         g.drawLine(left, top, right, top);
         g.drawLine(right, top, right, botton);
         g.drawLine(right, botton, left, botton);
