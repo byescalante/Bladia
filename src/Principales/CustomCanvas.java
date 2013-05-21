@@ -100,7 +100,7 @@ public class CustomCanvas extends Canvas {
     }
     public CustomCanvas() {
         Abstract.VarCustomCanvas.rwidth = 20;
-        Abstract.VarCustomCanvas.rheight = 18;
+        Abstract.VarCustomCanvas.rheight = 20;
         setBackground(Color.WHITE);
         addMouseMotionListener(new MouseAdapter() {
 
