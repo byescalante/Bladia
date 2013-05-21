@@ -23,8 +23,8 @@ public class Diseño extends javax.swing.JFrame {
      */
     public Diseño() {
         initComponents();
-        GraphicsDevice dev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        dev.setFullScreenWindow(this);
+        //GraphicsDevice dev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        //dev.setFullScreenWindow(this);
         grupo.add(radio_Draw);
         grupo.add(radio_fill);
         radio_Draw.setSelected(true);
