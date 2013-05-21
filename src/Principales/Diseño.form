@@ -300,18 +300,25 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="boton_linea" alignment="0" max="32767" attributes="0"/>
-                      <Component id="boton_Elipse" alignment="1" max="32767" attributes="0"/>
-                      <Component id="boton_Arco" max="32767" attributes="0"/>
-                      <Component id="boton_QuaCurv" alignment="1" max="32767" attributes="0"/>
-                      <Component id="botton_roundRectangle" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botton_square" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botton_triangle" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="botton_triangle" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="boton_linea" min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="boton_Elipse" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="boton_Arco" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="boton_QuaCurv" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="botton_roundRectangle" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="botton_square" min="-2" pref="60" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -319,19 +326,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="boton_Arco" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="boton_Arco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="boton_Elipse" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="boton_Elipse" min="-2" pref="66" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="boton_linea" min="-2" pref="42" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="boton_QuaCurv" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="boton_linea" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botton_roundRectangle" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="boton_QuaCurv" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botton_square" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="botton_triangle" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="botton_roundRectangle" min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="botton_square" min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="botton_triangle" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -340,7 +347,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="boton_Arco">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arco2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/arco4.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ArcoActionPerformed"/>
@@ -348,7 +357,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_Elipse">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ellipse2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/elipce2.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ElipseActionPerformed"/>
@@ -356,7 +367,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_linea">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Linea2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/linea.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_lineaActionPerformed"/>
@@ -364,7 +377,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_QuaCurv">
           <Properties>
-            <Property name="text" type="java.lang.String" value="QuaCurv2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/quacurve.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_QuaCurvActionPerformed"/>
@@ -372,7 +387,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botton_roundRectangle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="RoundRectangle2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/roudrec.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_roundRectangleActionPerformed"/>
@@ -380,7 +397,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botton_square">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Square2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/cuadro.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_squareActionPerformed"/>
@@ -388,7 +407,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botton_triangle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Triangle2D"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/triangulo.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botton_triangleActionPerformed"/>
@@ -412,38 +433,61 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="boton_Izquierda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="boton_Derecha" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="boton_up" min="-2" pref="62" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="boton_abajo" min="-2" pref="67" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <Component id="boton_up" alignment="0" max="32767" attributes="0"/>
-              <Component id="boton_abajo" alignment="0" max="32767" attributes="0"/>
-              <Component id="boton_escalarIncrement" alignment="0" max="32767" attributes="0"/>
-              <Component id="boton_Decremento" alignment="0" max="32767" attributes="0"/>
-              <Component id="botonRotarDerecha" max="32767" attributes="0"/>
-              <Component id="botonRotarIzquierda" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
+                  <Component id="boton_Izquierda" min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="boton_Derecha" min="-2" pref="69" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="botonRotarIzquierda" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="boton_escalarIncrement" min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonRotarDerecha" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="boton_Decremento" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="boton_up" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="boton_Derecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="boton_Izquierda" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="boton_Derecha" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_Izquierda" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="boton_abajo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  <Component id="boton_escalarIncrement" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="boton_Decremento" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="botonRotarDerecha" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="botonRotarIzquierda" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="boton_abajo" min="-2" pref="69" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="boton_escalarIncrement" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_Decremento" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="botonRotarDerecha" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="botonRotarIzquierda" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -452,7 +496,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="boton_up">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arriba"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaAR.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_upActionPerformed"/>
@@ -460,7 +506,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_Derecha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Derecha"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaDe.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_DerechaActionPerformed"/>
@@ -468,7 +516,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_Izquierda">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Izquierda"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaIz.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_IzquierdaActionPerformed"/>
@@ -476,7 +526,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_abajo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Abajo"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaAB.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_abajoActionPerformed"/>
@@ -484,7 +536,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_escalarIncrement">
           <Properties>
-            <Property name="text" type="java.lang.String" value="+"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/lupaMAs.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_escalarIncrementActionPerformed"/>
@@ -492,7 +546,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="boton_Decremento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="-"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/lupame.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_DecrementoActionPerformed"/>
@@ -500,7 +556,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonRotarDerecha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Rotar Derecha"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaRT.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRotarDerechaActionPerformed"/>
@@ -508,7 +566,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="botonRotarIzquierda">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Rotar Izquierda"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/iconos/flechaTIZ.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRotarIzquierdaActionPerformed"/>

@@ -264,49 +264,49 @@ public class Diseño extends javax.swing.JFrame {
         panel_Figuras.setBackground(new java.awt.Color(204, 204, 204));
         panel_Figuras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        boton_Arco.setText("Arco2D");
+        boton_Arco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/arco4.png"))); // NOI18N
         boton_Arco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_ArcoActionPerformed(evt);
             }
         });
 
-        boton_Elipse.setText("Ellipse2D");
+        boton_Elipse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/elipce2.png"))); // NOI18N
         boton_Elipse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_ElipseActionPerformed(evt);
             }
         });
 
-        boton_linea.setText("Linea2D");
+        boton_linea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/linea.png"))); // NOI18N
         boton_linea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_lineaActionPerformed(evt);
             }
         });
 
-        boton_QuaCurv.setText("QuaCurv2D");
+        boton_QuaCurv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/quacurve.png"))); // NOI18N
         boton_QuaCurv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_QuaCurvActionPerformed(evt);
             }
         });
 
-        botton_roundRectangle.setText("RoundRectangle2D");
+        botton_roundRectangle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/roudrec.png"))); // NOI18N
         botton_roundRectangle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botton_roundRectangleActionPerformed(evt);
             }
         });
 
-        botton_square.setText("Square2D");
+        botton_square.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cuadro.png"))); // NOI18N
         botton_square.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botton_squareActionPerformed(evt);
             }
         });
 
-        botton_triangle.setText("Triangle2D");
+        botton_triangle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/triangulo.png"))); // NOI18N
         botton_triangle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botton_triangleActionPerformed(evt);
@@ -318,90 +318,94 @@ public class Diseño extends javax.swing.JFrame {
         panel_FigurasLayout.setHorizontalGroup(
             panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FigurasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boton_linea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_Elipse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_Arco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_QuaCurv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botton_roundRectangle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botton_square, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botton_triangle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addGroup(panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botton_triangle, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(boton_linea, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boton_Elipse, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boton_Arco, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boton_QuaCurv, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botton_roundRectangle, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_FigurasLayout.createSequentialGroup()
+                            .addGap(7, 7, 7)
+                            .addComponent(botton_square, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         panel_FigurasLayout.setVerticalGroup(
             panel_FigurasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FigurasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boton_Arco, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_Arco)
                 .addGap(18, 18, 18)
-                .addComponent(boton_Elipse, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_Elipse, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(boton_linea, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boton_QuaCurv, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_linea, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botton_roundRectangle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_QuaCurv, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botton_square, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botton_triangle, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botton_roundRectangle, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botton_square, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(botton_triangle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         panel_Movimientos.setBackground(new java.awt.Color(204, 204, 204));
         panel_Movimientos.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        boton_up.setText("Arriba");
+        boton_up.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaAR.png"))); // NOI18N
         boton_up.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_upActionPerformed(evt);
             }
         });
 
-        boton_Derecha.setText("Derecha");
+        boton_Derecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaDe.png"))); // NOI18N
         boton_Derecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_DerechaActionPerformed(evt);
             }
         });
 
-        boton_Izquierda.setText("Izquierda");
+        boton_Izquierda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaIz.png"))); // NOI18N
         boton_Izquierda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_IzquierdaActionPerformed(evt);
             }
         });
 
-        boton_abajo.setText("Abajo");
+        boton_abajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaAB.png"))); // NOI18N
         boton_abajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_abajoActionPerformed(evt);
             }
         });
 
-        boton_escalarIncrement.setText("+");
+        boton_escalarIncrement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/lupaMAs.png"))); // NOI18N
         boton_escalarIncrement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_escalarIncrementActionPerformed(evt);
             }
         });
 
-        boton_Decremento.setText("-");
+        boton_Decremento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/lupame.png"))); // NOI18N
         boton_Decremento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_DecrementoActionPerformed(evt);
             }
         });
 
-        botonRotarDerecha.setText("Rotar Derecha");
+        botonRotarDerecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaRT.png"))); // NOI18N
         botonRotarDerecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRotarDerechaActionPerformed(evt);
             }
         });
 
-        botonRotarIzquierda.setText("Rotar Izquierda");
+        botonRotarIzquierda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/flechaTIZ.png"))); // NOI18N
         botonRotarIzquierda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRotarIzquierdaActionPerformed(evt);
@@ -413,35 +417,49 @@ public class Diseño extends javax.swing.JFrame {
         panel_MovimientosLayout.setHorizontalGroup(
             panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
-                .addComponent(boton_Izquierda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
+                        .addComponent(boton_up, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
+                        .addComponent(boton_abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
+                .addGap(0, 18, Short.MAX_VALUE)
+                .addComponent(boton_Izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(boton_Derecha, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MovimientosLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_escalarIncrement, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_Derecha))
-            .addComponent(boton_up, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(boton_abajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(boton_escalarIncrement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(boton_Decremento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonRotarDerecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRotarDerecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_Decremento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         panel_MovimientosLayout.setVerticalGroup(
             panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_MovimientosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(33, 33, 33)
                 .addComponent(boton_up)
-                .addGap(28, 28, 28)
-                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(boton_Derecha)
                     .addComponent(boton_Izquierda))
-                .addGap(18, 18, 18)
-                .addComponent(boton_abajo)
-                .addGap(55, 55, 55)
-                .addComponent(boton_escalarIncrement)
-                .addGap(39, 39, 39)
-                .addComponent(boton_Decremento)
-                .addGap(39, 39, 39)
-                .addComponent(botonRotarDerecha)
-                .addGap(36, 36, 36)
-                .addComponent(botonRotarIzquierda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boton_escalarIncrement)
+                    .addComponent(boton_Decremento))
+                .addGap(146, 146, 146)
+                .addGroup(panel_MovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRotarDerecha, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRotarIzquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
